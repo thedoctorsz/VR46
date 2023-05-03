@@ -1,6 +1,6 @@
 # sync rom
-repo init --depth=1 --no-repo-verify -u https://github.com/Project-Elixir/manifest -b Tiramisu --git-lfs -g default,-mips,-darwin,-notdefault
-git clone https://github.com/thedoctorsz/local_manifest --depth 1 -b elixir-13 .repo/local_manifests
+repo init --depth=1 --no-repo-verify -u https://github.com/Evolution-X/manifest -b tiramisu --git-lfs -g default,-mips,-darwin,-notdefault
+git clone https://github.com/thedoctorsz/local_manifest --depth 1 -b evo-13 .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # build rom
@@ -10,12 +10,12 @@ timeStart
 source build/envsetup.sh
 export BUILD_USERNAME="$USERNAME"
 export BUILD_HOSTNAME="$HOSTNAME"
-lunch aosp_whyred-userdebug
+lunch evolution_whyred-userdebug
 mkfifo reading # Jangan di Hapus
 tee "${BUILDLOG}" < reading & # Jangan di Hapus
 build_message "Building Started" # Jangan di Hapus
 progress & # Jangan di Hapus
-mka bacon -j8 > reading & sleep 95m # Jangan di hapus text line (> reading)
+mka evolution -j8 > reading & sleep 95m # Jangan di hapus text line (> reading)
 
 retVal=$?
 timeEnd
